@@ -1,3 +1,4 @@
+// Initialize Firebase
 var config = {
     apiKey: "AIzaSyCtrfXBfHYtvolTMOS0y-WFY9Cv2LwhJDY",
     authDomain: "train-schedule-cbf17.firebaseapp.com",
@@ -7,7 +8,6 @@ var config = {
     messagingSenderId: "309181181107"
 };
 firebase.initializeApp(config);
-
 
 //variable to reference firebase
 var database = firebase.database();
@@ -23,18 +23,18 @@ var currentTime = moment();
 
 $("#add-train").on("click", function (event) {
     event.preventDefault()
-    var newRow = $("<tr>")
-   
+
+
     train = $("#trainName").val().trim();
-    newRow.append("<td>" +train +"</td>" )
+
     destination = $("#destination").val().trim();
-    newRow.append("<td>"+ destination +"</td>")
+    // newRow.append("<td>"+ destination +"</td>")
     firstTime = $("#firstTrain").val().trim();
 
     var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years")
 
     frequency = parseInt($("#frequency").val().trim());
-    newRow.append("<td>"+ frequency +"</td>" ) ;
+
 
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes")
     var remainder = diffTime % frequency
@@ -43,10 +43,11 @@ $("#add-train").on("click", function (event) {
     var minLeft = moment().add(minAway, "minutes")
 
     nextTrain = moment(minLeft).format("HH:mm")
-    newRow.append("<td>"+ nextTrain +"</td>");
-    newRow.append("<td>"+ minAway +"</td>");
-    $("#newTrains").append(newRow)
 
+    $("#trainName").val("");
+    $("#frequency").val("");
+    $("#destination").val("");
+    $("#firstTrain").val("");
 
     database.ref().push({
         train: train,
@@ -57,12 +58,37 @@ $("#add-train").on("click", function (event) {
         minAway: minAway,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
 
-    })
-
-    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
-        var sv = snapshot.val();
-
-        
-    })
-
+    });
 })
+
+database.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", function (snapshot) {
+    var sv = snapshot.val();
+
+    console.log(sv.train);
+    console.log(sv.destination);
+    console.log(sv.firstTime);
+    console.log(sv.frequency);
+    console.log(sv.nextTrain);
+    var newRow = $("<tr>")
+    newRow.append("<td>" + sv.train + "</td>")
+    newRow.append("<td>" + sv.destination + "</td>")
+    newRow.append("<td>" + sv.frequency + "</td>")
+    var firstTimeConverted = moment(sv.firstTime, "HH:mm").subtract(1, "years")
+
+ 
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes")
+    var remainder = diffTime % sv.frequency
+
+    minAway = sv.frequency - remainder;
+    var minLeft = moment().add(minAway, "minutes")
+
+    nextTrain = moment(minLeft).format("HH:mm")
+    newRow.append("<td>" + nextTrain + "</td>");
+    newRow.append("<td>" + minAway + "</td>");
+    $("#newTrains").append(newRow)
+
+}), function (errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+};
+
+

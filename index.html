@@ -7,11 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Train Tracker</title>
   <link rel="icon" href="assets/images/switch-tracks.png">
+  <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+
 </head>
 
 <body>
@@ -26,13 +28,14 @@
   <div class="row">
     <div class="container" id="current-schedule">
       <h3>Current Train Schedule</h3>
-      <table id="newTrains" style="width: 70%">
+      <table id="newTrains">
         <tr>
-          <th>Train Name</th>
-          <th>Destination</th>
-          <th>Frequency (mn) </th>
-          <th>Next Arrival</th>
-          <th>Minutes Away</th>
+          <th>Train Name <hr></th>
+          <th>Destination<hr></th>
+          <th>Frequency (mn)<hr> </th>
+          <th>Next Arrival<hr></th>
+          <th>Minutes Away<hr></th>
+       
         </tr>
 
       </table>
@@ -58,7 +61,7 @@
         <br>
         <br>
         <input type="submit" value="Add Train" id="add-train">
-        
+
 
       </form>
       <br>
@@ -68,8 +71,8 @@
 
   </div>
 
-  <script src="https://momentjs.com/downloads/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
   <script type="text/javascript" src="assets/java/moment.js"></script>
 </body>
 

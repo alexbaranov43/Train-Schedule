@@ -1,5 +1,12 @@
+body{
+    background: #fc5c65;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 16px;
+
+}
+
 #jumbo {
-    background-color: cadetblue;
+    background-color: #2bcbba;
     text-align: center;
 }
 
@@ -7,13 +14,24 @@ input{
     width: 100%
 }
 
+#newTrains{
+
+    width: 100%;
+}
+
+
+tr:nth-child(even) {
+    background-color: #778ca3
+}
+
 #add-train {
     width: 10%
 }
 
-.container {
-    border: cadetblue 2px solid;
-  
-    margin: 5% auto;
-}
 
+.container {
+    background-color: #d1d8e0;
+    border: #2bcbba 2px solid;
+    padding-bottom: 15px;  
+    margin: 3% auto;
+}
