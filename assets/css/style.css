@@ -1,0 +1,19 @@
+#jumbo {
+    background-color: cadetblue;
+    text-align: center;
+}
+
+input{
+    width: 100%
+}
+
+#add-train {
+    width: 10%
+}
+
+.container {
+    border: cadetblue 2px solid;
+  
+    margin: 5% auto;
+}
+

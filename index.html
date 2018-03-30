@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Train Tracker</title>
+  <link rel="icon" href="assets/images/switch-tracks.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+</head>
+
+<body>
+  <div class="jumbotron" id="jumbo">
+
+    <h1>TRAIN TRACKER
+      <i class="material-icons">directions_railway</i>
+
+    </h1>
+
+  </div>
+  <div class="row">
+    <div class="container" id="current-schedule">
+      <h3>Current Train Schedule</h3>
+      <table id="newTrains" style="width: 70%">
+        <tr>
+          <th>Train Name</th>
+          <th>Destination</th>
+          <th>Frequency (mn) </th>
+          <th>Next Arrival</th>
+          <th>Minutes Away</th>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="container" id="">
+      <h3>Add Train</h3>
+      <form action="Adding Trains">
+        <h4>Train Name</h4>
+        <input type="text" name="Train_Name" id="trainName">
+        <br>
+        <h4>Destination</h4>
+        <input type="text" name="Destination" id="destination">
+        <br>
+        <h4>First Train Time (HH:mm - military time)</h4>
+        <input type="text" name="First_Train_Time" id="firstTrain">
+        <br>
+        <h4>Frequency (min)</h4>
+        <input type="text" name="frequnecy" id="frequency">
+        <br>
+        <br>
+        <input type="submit" value="Add Train" id="add-train">
+        
+
+      </form>
+      <br>
+
+    </div>
+
+
+  </div>
+
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="assets/java/moment.js"></script>
+</body>
+
+</html>
